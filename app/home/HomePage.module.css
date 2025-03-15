@@ -1,0 +1,23 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    text-align: center;
+}
+
+.sity {
+    margin-top: 40px;
+    color: var(--button-color);
+    font-weight: 700;
+    font-size: 40px;
+}
+
+.mafia {
+    color: var(--white-color);
+    font-weight: 700;
+    font-size: 64px;
+    font: 'Advent Pro', serif;
+}
+

@@ -1,0 +1,53 @@
+.game-card {
+    width: 312px;
+    height: 600px;
+    background-color: rgba(21, 19, 19, 0.7);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.5);
+    border-radius: 0 0 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    }
+
+
+.date-container {
+    width: 344px;
+    height: 60px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+    text-align: center;
+    align-content: center;
+    background-color: rgba(21, 19, 19, 1);
+    font-size: 32px;
+    margin-left: -16px;
+}
+
+.gamers {
+    width: 344px;
+    height: 100px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+    text-align: center;
+    align-content: center;
+    background-color: rgba(21, 19, 19, 1);
+    font-size: 24px;
+    margin-left: -16px;
+}
+
+.button {
+    width: 344px;
+    min-height: 80px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+    text-align: center;
+    align-content: center;
+    background-color: rgba(21, 19, 19, 1);
+    font-size: 24px;
+    margin-left: -16px;
+}
+
+.text {
+    color: var(--white-color);
+    text-shadow: 0px 4px 10px  rgba(235, 90, 0, 0.5);
+
+}
