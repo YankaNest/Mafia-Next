@@ -24,7 +24,6 @@
 
 // export default GameSignupPage;
 'use client';
-import React from 'react';
 import styles from './GameSignupPage.module.css'
 import GameCard from '@/components/ui/GameCard/GameCard';
 
@@ -39,7 +38,6 @@ const GameSignupPage = () => {
 //       // Обновление статистики
 //     }
 //   };
-
 
   return (
     <div className={styles['game-signup']}>
