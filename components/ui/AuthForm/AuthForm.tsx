@@ -113,18 +113,18 @@
 import React, { useState } from "react";
 import styles from "./AuthForm.module.css";
 import { loginUser, registerUser } from "@/lib/api/auth";
-// import { registerUser, loginUser } from "../mafia-app\lib\api\auth.ts"; // Импорт функций API
 
 interface AuthFormProps {
   type: "register" | "login";
 }
 
 const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [profileImage, setProfileImage] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [FirstName, setFirstName] = useState("");
+  const [LastName, setLastName] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
+  // const [ProfileImage, setProfileImage] = useState<'' | string>('');
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -133,12 +133,12 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     try {
       if (type === "register") {
         // Регистрация пользователя
-        const data = await registerUser(firstName, lastName, email, password, profileImage);
+        const data = await registerUser(FirstName, LastName, Email, Password, PhoneNumber);{/**/}
         console.log("Пользователь зарегистрирован:", data);
         alert("Регистрация успешна!");
       } else if (type === "login") {
         // Авторизация пользователя
-        const data = await loginUser(email, password);
+        const data = await loginUser(Email, Password);
         console.log("Авторизация успешна:", data);
         localStorage.setItem("access_token", data.jwtToken);
         localStorage.setItem("refresh_token", data.refreshToken);
@@ -154,12 +154,14 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     <div className={styles.background}>
       <div className={styles.container}>
         <form onSubmit={handleSubmit} className={styles.form}>
+        
           {type === "register" && (
             <>
+            <h1>Регистрация</h1>
               <input
                 type="text"
                 placeholder="Имя"
-                value={firstName}
+                value={FirstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 required
                 className={styles.input}
@@ -167,25 +169,34 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
               <input
                 type="text"
                 placeholder="Фамилия"
-                value={lastName}
+                value={LastName}
                 onChange={(e) => setLastName(e.target.value)}
                 required
                 className={styles.input}
               />
               <input
-                type="text"
-                placeholder="URL изображения профиля"
-                value={profileImage}
-                onChange={(e) => setProfileImage(e.target.value)}
+                type="phone"
+                placeholder="Номер телефона"
+                value={PhoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
                 required
                 className={styles.input}
               />
+              {/* <input
+                type="file"
+                placeholder="URL изображения профиля"
+                value={ProfileImage}
+                onChange={(e) => setProfileImage(e.target.value)}
+                required
+                className={styles.input}
+              /> */}
             </>
           )}
+          <h1>Авторизация</h1>
           <input
             type="email"
             placeholder="Email"
-            value={email}
+            value={Email}
             onChange={(e) => setEmail(e.target.value)}
             required
             className={styles.input}
@@ -193,7 +204,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
           <input
             type="password"
             placeholder="Пароль"
-            value={password}
+            value={Password}
             onChange={(e) => setPassword(e.target.value)}
             required
             className={styles.input}
