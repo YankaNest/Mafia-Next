@@ -50,8 +50,6 @@
 //   refreshToken: string;
 // }
 
-const API_BASE_URL = 'http://188.126.47.65/user';
-
 
 // const ProfileImage = null
 // Регистрация пользователя
@@ -180,6 +178,8 @@ const API_BASE_URL = 'http://188.126.47.65/user';
 //     throw new Error('Registration failed');
 //   }
 // };
+
+const API_BASE_URL = '';
 
 export const registerUser = async (
   FirstName: string,

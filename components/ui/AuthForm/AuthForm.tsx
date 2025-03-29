@@ -220,4 +220,3 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
 };
 
 export default AuthForm;
-
