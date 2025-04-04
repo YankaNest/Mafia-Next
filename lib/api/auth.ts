@@ -180,7 +180,7 @@
 // };
 
 
-const API_BASE_URL = 'http://188.126.47.65/user';
+const API_BASE_URL = '';
 
 export const registerUser = async (
   FirstName: string,
