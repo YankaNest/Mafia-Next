@@ -90,7 +90,7 @@ const GameCard = () => {
         {isAuthButtonVisible && (
           <div className={styles['auth-button']}>
             <Button onClick={() => setRegisterModalOpen(true)}>Зарегистрироваться</Button>
-            <p>или</p>
+            <p className={styles['ili']}>или</p>
             <Button onClick={() => setLoginModalOpen(true)}>Войти</Button>
           </div>
         )}
@@ -100,7 +100,7 @@ const GameCard = () => {
       <CustomModal
         isOpen={isRegisterModalOpen}
         onClose={() => setRegisterModalOpen(false)}
-        title="Регистрация"
+        // title="Регистрация"
       >
         <AuthForm type="register" />
       </CustomModal>
@@ -109,7 +109,7 @@ const GameCard = () => {
       <CustomModal
         isOpen={isLoginModalOpen}
         onClose={() => setLoginModalOpen(false)}
-        title="Авторизация"
+        // title="Авторизация"
       >
         <AuthForm type="login" />
       </CustomModal>

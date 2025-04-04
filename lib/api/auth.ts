@@ -179,7 +179,8 @@
 //   }
 // };
 
-const API_BASE_URL = '';
+
+const API_BASE_URL = 'http://188.126.47.65/user';
 
 export const registerUser = async (
   FirstName: string,
@@ -187,21 +188,17 @@ export const registerUser = async (
   Email: string,
   Password: string,
   PhoneNumber: string,
-  ProfileImage?: File | null // Опциональный параметр, может быть файлом или null
+  ProfileImage?: File | null // Опциональный параметр
 ) => {
   const formData = new FormData();
 
-  // Добавляем все поля, даже если они пустые
   formData.append('FirstName', FirstName);
   formData.append('LastName', LastName);
   formData.append('Email', Email);
   formData.append('Password', Password);
   formData.append('PhoneNumber', PhoneNumber);
-
-  // Если файл не передан, добавляем пустую строку
   formData.append('ProfileImage', ProfileImage || '');
 
-  // Логируем данные перед отправкой
   console.log('Передаваемые данные:');
   for (const [key, value] of formData.entries()) {
     console.log(`${key}:`, value);
@@ -216,22 +213,17 @@ export const registerUser = async (
     console.log('Response status:', response.status);
 
     if (!response.ok) {
-      const errorText = await response.text(); // Логируем тело ответа сервера
+      const errorText = await response.text();
       console.error('Server response:', errorText);
       throw new Error(`Server error: ${response.status}`);
     }
 
-    return await response; // Возвращает данные успешной регистрации
+    return await response;
   } catch (error) {
     console.error('Error:', error);
     throw error;
   }
 };
-
-
-
-
-
 
 // Авторизация пользователя
 export const loginUser = async (email: string, password: string) => {

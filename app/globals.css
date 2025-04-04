@@ -1,6 +1,6 @@
 :root {
   --font: 'Merriweather', serif;
-  --button-font: "Sofia Sansi", sans-serif; /* "El Messiri", sans-serif /'Sofia Sans', sans-serif /'Caveat', cursive*/
+  --button-font: 'Merriweather', serif;/* "El Messiri", sans-serif /'Sofia Sans', sans-serif /'Caveat', cursive*/
   --card-font: "Jaini", system-ui;
   --button-color: #ca7e58;
   --selected-color: rgba(218, 210, 205, 1);

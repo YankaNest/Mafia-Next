@@ -154,10 +154,9 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
     <div className={styles.background}>
       <div className={styles.container}>
         <form onSubmit={handleSubmit} className={styles.form}>
-        
+        <h1 className={styles.title}>{type === "register" ? "Регистрация" : "Авторизация"}</h1>
           {type === "register" && (
             <>
-            <h1>Регистрация</h1>
               <input
                 type="text"
                 placeholder="Имя"
@@ -192,7 +191,6 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
               /> */}
             </>
           )}
-          <h1>Авторизация</h1>
           <input
             type="email"
             placeholder="Email"
@@ -209,7 +207,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ type }) => {
             required
             className={styles.input}
           />
-          <button type="submit" className={styles.button}>
+          <button type="submit" className={styles.subButton}>
             {type === "register" ? "Зарегистрироваться" : "Войти"}
           </button>
           {errorMessage && <p className={styles.error}>{errorMessage}</p>}

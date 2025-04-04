@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className={styles['footer-container']}>
       <div className={styles['footer']}>
         <p>2025 Akumu</p>
-        <p>Disigned by loh</p>
+        <p>Disigned by Aboba</p>
         <p>Mafia</p>
       </div>
     </footer>
