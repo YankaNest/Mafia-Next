@@ -58,13 +58,16 @@ import React, { useState } from 'react';
 import styles from './GameCard.module.css';
 import Button from '../Button/Button';
 import CustomModal from '../Modal/Modal';
-import AuthForm from '../AuthForm/AuthForm';
+import Login from '../AuthForm/AuthForm2';
+import RegisterForm from '../AuthForm/RegisterForm';
 
 const GameCard = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Состояние авторизации
   const [isRegisterModalOpen, setRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setLoginModalOpen] = useState(false);
   const [isAuthButtonVisible, setAuthButtonVisible] = useState(false); // Видимость блока auth-button
+
+ 
 
   const handleSignUp = () => {
     if (!isAuthenticated) {
@@ -102,7 +105,7 @@ const GameCard = () => {
         onClose={() => setRegisterModalOpen(false)}
         // title="Регистрация"
       >
-        <AuthForm type="register" />
+        <RegisterForm /> 
       </CustomModal>
 
       {/* Модальное окно авторизации */}
@@ -111,7 +114,7 @@ const GameCard = () => {
         onClose={() => setLoginModalOpen(false)}
         // title="Авторизация"
       >
-        <AuthForm type="login" />
+        <Login/>
       </CustomModal>
     </div>
   );

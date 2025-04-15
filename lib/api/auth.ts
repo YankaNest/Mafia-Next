@@ -1,186 +1,7 @@
-// import axios from 'axios';
+'use server';
+import { signIn } from "@/auth";
+import { AuthError } from "next-auth";
 
-// interface AuthResponse {
-//     jwtToken: string;
-//     refreshToken: string;
-//   }
-
-// const API_BASE_URL = 'api/user'; // Замените на ваш базовый URL
-
-// // Регистрация пользователя
-// export const registerUser = async (
-//   firstName: string,
-//   lastName: string,
-//   email: string,
-//   password: string,
-//   profileImage: string
-// ) => {
-//   const response = await axios.post(`${API_BASE_URL}/create`, {
-//     firstName,
-//     lastName,
-//     email,
-//     password,
-//     profileImage,
-//   });
-
-//   return response.data; // Возвращает данные ответа
-// };
-
-// // Авторизация пользователя
-// export const loginUser = async (email: string, password: string): Promise<AuthResponse> => {
-//   const response = await axios.post<AuthResponse>(`${API_BASE_URL}/login`, {
-//     email,
-//     password,
-//   });
-
-//   return response.data; // Возвращает accessToken и refreshToken
-// };
-
-// // Обновление токена
-// export const refreshToken = async (refreshToken: string) => {
-//   const response = await axios.post(`${API_BASE_URL}/refresh-token`, {
-//     refreshToken,
-//   });
-
-//   return response.data; // Возвращает новый accessToken и refreshToken
-// };
-
-// interface AuthResponse {
-//   jwtToken: string;
-//   refreshToken: string;
-// }
-
-
-// const ProfileImage = null
-// Регистрация пользователя
-// export const registerUser = async (
-//   FirstName: string,
-//   LastName: string,
-//   Email: string,
-//   Password: string,
-//   PhoneNumber: string
-// ) => {
-//   const options = {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify({
-//       FirstName,
-//       LastName,
-//       Email,
-//       Password,
-//       ProfileImage,
-//       PhoneNumber
-//     }),
-//   };
-
-//   try {
-//     const response = await fetch(`${API_BASE_URL}/create`, options);
-//     console.log(response);
-    
-//     if (response.ok) {
-//       return await response.json();
-//     } else {
-//       throw new Error('Registration failed');
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//     throw error;
-//   }
-// };
-
-// Регистрация пользователя с использованием multipart/form-data
-// export const registerUser = async (
-//   FirstName: string,
-//   LastName: string,
-//   Email: string,
-//   Password: string,
-//   PhoneNumber: string,
-//   ProfileImage?: File // Добавляем изображение профиля как файл (необязательный параметр)
-// ) => {
-//   // Создаем объект FormData
-//   const formData = new FormData();
-  
-//   // Добавляем данные в FormData
-//   formData.append('FirstName', FirstName);
-//   formData.append('LastName', LastName);
-//   formData.append('Email', Email);
-//   formData.append('Password', Password);
-//   formData.append('PhoneNumber', PhoneNumber);
-
-//   // Если изображение профиля передано, добавляем его в FormData
-//   // if (ProfileImage) {
-//   //   formData.append('ProfileImage', ProfileImage);
-//   // } else {
-//   //   formData.append('ProfileImage', '')
-//   // }
-
-//   console.log('formData FirstName =>',formData.get('FirstName'));
-//   console.log('formData LastName =>',formData.get('LastName'));
-//   console.log('formData Email =>',formData.get('Email'));
-//   console.log('formData Password =>',formData.get('Password'));
-//   console.log('formData number =>',formData.get('PhoneNumber'));
-//   console.log('formData ProfileImage =>',formData.get('ProfileImage'));
-
-
-//   console.log('ProfileImage', ProfileImage);
-  
-  
-
-//   const options = {
-//     method: 'POST',
-//     body: formData, // Передаем FormData как тело запроса
-//   };
-
-//   try {
-//     const response = await fetch(`${API_BASE_URL}/create`, options);
-//     console.log(response);
-//     console.log('options =>',options.body.get('PhoneNumber'));
-
-//     if (response.ok) {
-//       return await response.json();
-//     } else {
-//       throw new Error('Registration failed');
-//     }
-//   } catch (error) {
-//     console.error('Error:', error);
-//     throw error;
-//   }
-// };
-
-// export const registerUser = async (
-//   FirstName: string,
-//   LastName: string,
-//   Email: string,
-//   Password: string,
-//   PhoneNumber: string,
-//   ProfileImage?: string | null // Опциональный параметр, может быть строкой или null
-// ) => {
-//   try {
-//     const response = await axios.post(`${API_BASE_URL}/create`, {
-//       FirstName,
-//       LastName,
-//       Email,
-//       Password,
-//       ProfileImage: ProfileImage || null, // Отправляем null, если ProfileImage не передано
-//       PhoneNumber
-//     }, {
-//       headers: {
-//         'Content-Type': 'multipart/form-data'
-//       }
-//     });
-
-//     console.log(response.data);
-//     return response.data;
-//   } catch (error) {
-//     console.error('Error:', error);
-//     throw new Error('Registration failed');
-//   }
-// };
-
-
-const API_BASE_URL = '';
 
 export const registerUser = async (
   FirstName: string,
@@ -205,7 +26,7 @@ export const registerUser = async (
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/create`, {
+    const response = await fetch(`${process.env.API_BASE_URL}/create`, {
       method: 'POST',
       body: formData,
     });
@@ -239,8 +60,8 @@ export const loginUser = async (email: string, password: string) => {
   };
 
   try {
-    const response = await fetch(`${API_BASE_URL}/login`, options);
-    if (response.ok) {
+    const response = await fetch(`${process.env.API_BASE_URL}/login`, options);
+    if (response.ok) {      
       return await response.json(); // Возвращает accessToken и refreshToken
     } else {
       throw new Error('Authentication failed');
@@ -264,7 +85,7 @@ export const refreshToken = async (refreshToken: string) => {
   };
 
   try {
-    const response = await fetch(`${API_BASE_URL}/refresh-token`, options);
+    const response = await fetch(`${process.env.API_BASE_URL}/refresh-token`, options);
     if (response.ok) {
       return await response.json(); // Возвращает новый accessToken и refreshToken
     } else {
@@ -274,5 +95,25 @@ export const refreshToken = async (refreshToken: string) => {
     console.error('Error:', error);
     throw error;
   }
+};
+
+export const authenticate = async (
+	prevState: string | undefined,
+	formData: FormData
+) => {
+	console.log('form data =>',formData);
+	try {
+		await signIn('credentials', formData);
+	} catch (error) {
+		if (error instanceof AuthError) {
+			switch (error.type) {
+				case 'CredentialsSignin':
+					return 'Не правильная почта или пароль.';
+				default:
+					return 'Непредвиденная ошибка.';
+			}
+		}
+		throw error;
+	}
 };
 
