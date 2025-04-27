@@ -20,18 +20,18 @@ export const registerUser = async (
   formData.append('PhoneNumber', PhoneNumber);
   formData.append('ProfileImage', ProfileImage || '');
 
-  console.log('Передаваемые данные:');
-  for (const [key, value] of formData.entries()) {
-    console.log(`${key}:`, value);
-  }
+  // console.log('Передаваемые данные:');
+  // for (const [key, value] of formData.entries()) {
+  //   console.log(`${key}:`, value);
+  // }
 
   try {
-    const response = await fetch(`${process.env.API_BASE_URL}/create`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/create`, {
       method: 'POST',
       body: formData,
     });
 
-    console.log('Response status:', response.status);
+    // console.log('Response status:', response.status);
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -60,7 +60,10 @@ export const loginUser = async (email: string, password: string) => {
   };
 
   try {
-    const response = await fetch(`${process.env.API_BASE_URL}/login`, options);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/login`,{
+      ...options,
+      signal: AbortSignal.timeout(3000) // Увеличено до 30 секунд
+    });
     if (response.ok) {      
       return await response.json(); // Возвращает accessToken и refreshToken
     } else {
@@ -85,7 +88,7 @@ export const refreshToken = async (refreshToken: string) => {
   };
 
   try {
-    const response = await fetch(`${process.env.API_BASE_URL}/refresh-token`, options);
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/refresh-token`, options);
     if (response.ok) {
       return await response.json(); // Возвращает новый accessToken и refreshToken
     } else {

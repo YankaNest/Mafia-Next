@@ -28,59 +28,28 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 				if (!parseCredentials.success) {
 					return null;
 				}
-				console.log('parseCredential',parseCredentials)
+				console.log('parseCredential', parseCredentials)
 				const response: IauthResponse = await loginUser(
 					parseCredentials.data.email,
 					parseCredentials.data.password
 				);
 				console.log(response);
-				// const tokenJWT = response.jwtToken;
-				// const decoded = jwtDecode(tokenJWT);
-	
-				// console.log(tokenJWT);   // ID пользователя
-				// console.log(decoded); // Роль пользователя
 
 				const user: User = {
 					token: response.jwtToken,
-                    refreshToken: response.refreshToken
+                    refreshToken: response.refreshToken,
+					roles: response.roles
 				};
-				console.log('user',user);
+				console.log('userROLE',user.roles);
 				
 				return user;
 			}
 		})
 	],
-	// 			// Простая проверка входных данных (email и password)
-	// 			if (!credentials?.email || !credentials?.password) {
-	// 				throw new Error('Email и пароль обязательны');
-	// 			}
 
-	// 			console.log('Credentials:', credentials);
-
-	// 			// Отправляем запрос на ваш API для авторизации
-	// 			const response: IauthResponse = await loginUser(
-	// 				credentials.email,
-	// 				credentials.password
-	// 			);
-	// 			console.log('Response:', response);
-
-	// 			// Формируем объект пользователя для NextAuth.js
-	// 			const user: User = {
-	// 				user: {
-	// 					id: response.idUser,
-	// 					role: response.roleDto.name,
-	// 					name: response.username
-	// 				},
-	// 				token: response.jwt, // Access token
-	// 				refreshToken: response.refreshToken // Refresh token от вашего API
-	// 			};
-	// 			return user; // Возвращаем пользователя, если авторизация успешна
-	// 		}
-	// 	})
-	// ],
 	callbacks: {
 		async jwt({ token, user }) {
-			console.log('user',user);
+			console.log('user', user);
 			
 			if (user) {
 				token.user = user; // Сохраняем данные пользователя в токен
@@ -156,6 +125,7 @@ declare module 'next-auth' {
 	interface User {
 		token: string; // Access Token от вашего API
 		refreshToken: string; // Refresh Token от вашего API
+		roles: string;
 	}
 	interface JWT {
         user: User;

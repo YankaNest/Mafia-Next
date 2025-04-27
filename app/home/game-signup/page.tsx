@@ -1,16 +1,17 @@
 import { auth } from '@/auth';
 import styles from './GameSignupPage.module.css'
-import GameCard from '@/components/ui/GameCard/GameCard';
+import { getAllGame } from '@/lib/api/games';
+import GameSlider from '@/components/ui/GameSlider/GameSlider';
 
 const GameSignupPage = async () => {
  const session = await auth();
- console.log(session);
+ const allGames = await getAllGame();
+ 
 
   return (
     <div className={styles['game-signup']}>
-      <GameCard />
-      <GameCard />
-      <GameCard />
+      <GameSlider allGames={allGames} session={session} />
+  
     </div>
   );
 };

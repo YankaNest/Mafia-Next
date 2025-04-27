@@ -1,8 +1,13 @@
+'use server';
 import React from 'react';
 import Link from 'next/link';
 import styles from "./Navigation.module.css"
+import { auth } from '@/auth';
 
-const Navigation = () => {
+
+const Navigation = async () => {
+  const session = await auth();
+  const isAdmin = session?.user?.roles?.includes('Admin');
   return (
     <div className={styles['main']}>
       <nav className={styles['nav']}>
@@ -26,7 +31,15 @@ const Navigation = () => {
           </Link>
           <Link href="/home/profile">
             Профиль
-          </Link>   
+          </Link>
+          {
+            isAdmin && (
+            <Link href="/home/admin">
+              Адммин-панель
+            </Link>
+            )
+          }
+            
         </div>
       </nav>
     </div>
