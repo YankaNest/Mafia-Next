@@ -2,6 +2,7 @@
 import { CreateGamePayload } from '@/interfaces/game';
 import { createGame } from '@/lib/api/games';
 import React, { useState } from 'react';
+import styles from './CreateGameForm.module.css'
 
 const CreateGameForm: React.FC = () => {
   const [form, setForm] = useState<CreateGamePayload>({
@@ -58,7 +59,7 @@ const CreateGameForm: React.FC = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={styles.form}>
       <div>
         <label htmlFor="name">Название игры:</label><br />
         <input

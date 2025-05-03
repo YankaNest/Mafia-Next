@@ -7,9 +7,8 @@ import React from 'react';
 export default async function AdminPage() {
   const session = await auth();
 
-  if (!session || !session.user.roles?.includes('admin')) {
-    // Если нет сессии или нет роли admin - редирект на главную или 404
-    redirect('/home'); // или throw new Error('Not Found') + notFound()
+  if (!session || !session.user.roles?.includes('Admin')) {
+    redirect('/home');
   }
 
   return (

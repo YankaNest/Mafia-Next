@@ -64,3 +64,10 @@
     font-weight: 400;
     font-size: 22px;
 }
+
+.error {
+    color: #ff4d4f;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+  
