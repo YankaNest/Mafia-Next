@@ -1,91 +1,183 @@
 .main {
-    height: 125px;
-    align-content: center;
-    gap: 110px;
-    border-radius: 30px 30px;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.1);
+  height: 125px;
+  border-radius: 0 0 30px 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
 }
 
 .nav {
-    display: flex;
-    color: var(--button-color);
-    justify-content: center;
-    gap: 110px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 75px;
-    align-items: center;
-}
-
-.nav-links > a {
-    font-weight: 400;
-    font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 110px;
+  height: 100%;
+  position: relative;
+  padding: 0 24px;
 }
 
 .mafia-st {
-    font-weight: 400;
-    font-size: 48px;
+  font-weight: 400;
+  font-size: 48px;
+  color: var(--button-color);
+  user-select: none;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Ссылки */
+.nav-links {
+  display: flex;
+  gap: 75px;
+  align-items: center;
+}
+
+.nav-links > a {
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--button-color);
+  text-decoration: none;
+}
+
+.nav-links > a.active,
+.mafia-st > a.active {
+  color: #d39271;
+  font-weight: 500;
+  border-bottom: 1px solid #d8a78e;
+  text-shadow:
+    -0.05px -0.05px 0 #644b3e,
+    0.05px -0.05px 0 #644b3e,
+    -0.05px 0.05px 0 #644b3e,
+    0.05px 0.05px 0 #644b3e;
 }
 
 
-/* Адаптивность для меньших экранов */
-@media screen and (max-width: 1200px) {
-    .nav {
-      gap: 50px;
-    }
-  
-    .nav-links {
-      gap: 40px;
-    }
-  
-    .nav-links > a {
-      font-size: 24px;
-    }
-  
-    .mafia-st {
-      font-size: 36px;
-    }
+/* Кнопка-бургер */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 20;
+  position: absolute;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.burger span {
+  display: block;
+  height: 4px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: 0.3s;
+}
+
+/* Плавное уменьшение gap при уменьшении ширины экрана */
+@media screen and (max-width: 1600px) {
+  .nav {
+    gap: 80px;
   }
-  
-  /* Адаптивность для мобильных устройств */
-  @media screen and (max-width: 768px) {
-    .main {
-      height: 100px;
-    }
-  
-    .nav {
-      flex-direction: column;
-      gap: 20px;
-    }
-  
-    .nav-links {
-      flex-direction: column;
-      gap: 20px;
-    }
-  
-    .nav-links > a {
-      font-size: 18px;
-    }
-  
-    .mafia-st {
-      font-size: 24px;
-    }
+
+  .nav-links {
+    gap: 50px;
   }
-  
-  /* Адаптивность для очень маленьких экранов */
-  @media screen and (max-width: 480px) {
-    .main {
-      height: 80px;
-    }
-  
-    .nav-links > a {
-      font-size: 16px;
-    }
-  
-    .mafia-st {
-      font-size: 20px;
-    }
+}
+
+@media screen and (max-width: 1300px) {
+  .nav {
+    gap: 50px;
   }
+
+  .nav-links {
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .nav {
+    gap: 30px;
+  }
+
+  .nav-links {
+    gap: 20px;
+  }
+}
+
+/* Адаптив для экранов <= 900px */
+@media screen and (max-width: 900px) {
+  .main {
+    height: 100px;
+  }
+  .nav {
+    gap: 20px;
+  }
+
+  .mafia-st {
+    font-size: 48px;
+    text-align: center;
+      text-shadow:
+      -0.3px -0.3px 0 #bd8366ee,
+      0.3px -0.3px 0 #bd8366ee,
+      -0.3px 0.3px 0 #bd8366ee,
+      0.3px 0.3px 0 #bd8366ee;
+  
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  /* Всплывающее меню */
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100vw;
+    background: rgba(39, 37, 37, 0.4);
+    backdrop-filter: blur(8px);
+    /* padding-top: 20px; */
+    padding-bottom: 20px;
+    gap: 10px;
+    z-index: 15;
+    overflow-y: auto;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+
+  .nav-links.open > a {
+    font-size: 24px;
+    color: #ffffff;
+    padding-left: 24px;
+    text-decoration: none;
+    text-shadow:
+      -0.1px -0.1px 0 #ca7e58,
+      0.1px -0.1px 0 #ca7e58,
+      -0.1px 0.1px 0 #ca7e58,
+      0.1px 0.1px 0 #ca7e58;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+  .mafia-st {
+    font-size: 24px;
+  }
+
+  .nav-links.open > a {
+    font-size: 20px;
+  }
+}

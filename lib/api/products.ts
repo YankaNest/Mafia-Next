@@ -11,7 +11,12 @@ import { CreateProductPayload, IProduct } from "@/interfaces/product";
     formData.append('Price', productData.price.toString());
     formData.append('AvailableQuantity', productData.availableQuantity.toString());
     formData.append('Category', productData.category || '');
-    formData.append('Image', productData.image);
+    formData.append('MainImage', productData.mainImage);
+    if (Array.isArray(productData.images)) {
+      productData.images.forEach((file) => {
+        formData.append('Images', file);
+    });
+  }
     console.log('FORMDATA', formData);
   
     const headers: Record<string, string> = {};

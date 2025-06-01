@@ -1,0 +1,76 @@
+.cart-name {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.cart {
+  padding: 15px 0;
+}
+
+.cart-button {
+  position: absolute;
+  right: 15px;
+}
+
+.order-form {
+  justify-items: center;
+}
+
+.label {
+  font-size: 20px;
+  font-family: var(--font);
+  text-align: center; /* Текст по центру */
+  width: 100%; /* Чтобы text-align сработал */
+  margin-bottom: 5px;
+}
+
+.input,
+.select {
+  font-size: 16px;
+  background: none;
+  color: var(--white-color);
+  border: 2px solid var(--button-color); /* Одинаковая рамка */
+  border-radius: 8px; /* Скругление */
+  padding: 8px 12px;
+  width: 250px; /* Можно задать фиксированную ширину */
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+  
+}
+
+
+
+.input::placeholder,
+.select{
+  -webkit-appearance: none;
+  color: rgb(255, 255, 255);
+  font-family: 'Merriweather', serif;
+  font-weight: 400;
+  font-size: 18px;
+  text-align: center;
+}
+
+.select option {
+ color: black;
+ background-color: transparent;
+}
+
+.input:focus,
+.select:focus {
+  outline: none;
+  border-color: var(--button-color);
+  box-shadow: 0 0 5px var(--button-color);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем содержимое по горизонтали */
+  padding-bottom: 20px;
+}
+
+.button-container {
+  padding: 20px;
+}

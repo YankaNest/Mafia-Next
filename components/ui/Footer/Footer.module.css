@@ -1,17 +1,3 @@
-/* .footer {
-    height: 100px;
-    color: var(--button-color);
-    display: flex;
-    bottom: 0vh;
-    position: absolute;
-    font-size: 20px;
-    font-weight: 700;
-    align-items: center;
-    align-self: stretch;
-    text-align: center;
-    
-} */
-
 .footer {
     color: var(--button-color);
     display: flex;
@@ -26,16 +12,16 @@
     font-weight: 600;
   }
   
-  /* Для адаптивности */
   @media screen and (max-width: 768px) {
     .footer {
       padding: 10px;
+      font-size: 16px;
     }
   }
   
-  /* Для очень маленьких экранов */
   @media screen and (max-width: 480px) {
     .footer {
       padding: 5px;
+      font-size: 14px;
     }
   }

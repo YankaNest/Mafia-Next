@@ -4,7 +4,8 @@ export interface CreateProductPayload {
     price: number;
     availableQuantity: number;
     category?: string;
-    image: File; // файл изображения
+    mainImage: File;
+    images: File[];
   }
   
   export interface IProduct {
@@ -14,8 +15,8 @@ export interface CreateProductPayload {
     price: number;
     availableQuantity: number;
     category: string;
-    imageUrl: string;
+    mainImageUrl: string;
     carts: null;
-    orderDetails: null;
+    orderDetails: string | null;
   }
   

@@ -3,12 +3,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 30px;
     text-align: center;
 }
 
 .sity {
-    margin-top: 40px;
+    margin-top: 30px;
     color: var(--button-color);
     font-weight: 700;
     font-size: 40px;
@@ -21,3 +21,43 @@
     font: 'Advent Pro', serif;
 }
 
+.home-card {
+    width: 900px;
+    max-width: 100%;
+    height: auto;
+    transition: width 1s ease;
+}
+
+@media screen and (max-width: 1000px) {
+    .home-card {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .home-card {
+        width: 300px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .home-card{
+        width: 600px;
+    }
+
+    .sity {
+        font-weight: 600;
+        font-size: 30px;
+    }
+
+    .mafia {
+        font-weight: 600;
+        font-size: 50px;
+    }
+}
+
+@media screen and (max-width: 615px) {
+    .home-card{
+        width: 300px;
+    }
+}

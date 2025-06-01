@@ -1,0 +1,19 @@
+.CartItemContainer {
+justify-items: center;
+margin-bottom: 15px;
+}
+
+.cartItem {
+    display: flex;
+    align-items: center;
+}
+
+.textContainer {
+    display: block;
+    justify-items: center;
+    padding: 10px;
+}
+.quantityValue {
+    padding: 0 20px;
+    font-size: 20px;
+}

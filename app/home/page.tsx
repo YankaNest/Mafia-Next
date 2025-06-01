@@ -8,7 +8,7 @@ const HomePage = () => {
     <div className={styles['main']}>
       <p className={styles['sity']}>Город засыпает,<br/>просыпается...</p>
       <p className={styles['mafia']}>МАФИЯ</p>
-      <Image className={styles['home-card']}  alt='Карты игры' src='\home-card.svg' width={990} height={428}/>
+      <Image className={styles['home-card']}  alt='Карты игры' src='\home-card.svg' width={990} height={428} priority/>
     </div>
   );
 };

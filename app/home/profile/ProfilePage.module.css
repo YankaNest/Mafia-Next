@@ -1,0 +1,127 @@
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: var(--font);
+  color: #ffffff;
+}
+
+.mainInfo {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 40px;
+  color: #f7f7f7;
+}
+
+.profile_image_wrapper {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(202, 126, 88, 0.6);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.profile_image_wrapper:hover {
+  box-shadow: 0 0 25px rgba(202, 126, 88, 0.9);
+}
+
+.profile_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+/* Кнопка "Редактировать фото" занимает всю область, прозрачная, с градиентом снизу */
+.overlay {
+  position: absolute;
+  top: 0;       /* растянуть на всю высоту */
+  left: 0;      /* растянуть на всю ширину */
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(202, 126, 88, 0.85) 100%);
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 240px; /* чтобы текст был внизу */
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 50%;
+  user-select: none;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 20px;
+}
+
+/* Появление кнопки при наведении на обертку или на саму кнопку */
+.profile_image_wrapper:hover .overlay,
+.overlay:hover,
+.overlay:focus {
+  opacity: 1;
+}
+
+/* Убираем стандартный outline при фокусе, но добавим кастомный */
+.overlay:focus {
+  outline: 2px solid #ca7e58;
+  outline-offset: 2px;
+}
+
+.info {
+  flex: 1;
+}
+
+.userName p {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Основные стили контейнеров игр и заказов */
+.games, .orders {
+  margin-top: 30px;
+}
+
+/* Заголовки */
+.title {
+  margin-bottom: 15px;
+  color: #ffffff;
+  border-bottom: 2px solid #ca7e58; /* акцентный цвет */
+  padding-bottom: 5px;
+}
+
+/* Карточки игр и заказов с прозрачным фоном, рамкой и тенью */
+.gameCard, .orderCard {
+  background-color: rgba(0, 0, 0, 0.1); /* прозрачный фон */
+  border: 2px solid #ca7e58; /* рамка акцентного цвета */
+  border-radius: 12px;
+  padding: 20px 25px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(202, 126, 88, 0.3); /* тень с акцентным цветом */
+  color: #ffffff;
+  transition: box-shadow 0.3s ease;
+}
+
+.gameCard:hover, .orderCard:hover {
+  box-shadow: 0 6px 15px rgba(202, 126, 88, 0.5);
+}
+
+/* Текст внутри карточек */
+.gameCard p, .orderCard p {
+  margin: 6px 0;
+  font-size: 16px;
+  color: #eee; /* светлый текст для контраста */
+}
+
+.strongText {
+  color: #ca7e58; /* выделение ключевых слов акцентным цветом */
+}

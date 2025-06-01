@@ -5,9 +5,10 @@ const Footer = () => {
   return (
     <footer className={styles['footer-container']}>
       <div className={styles['footer']}>
-        <p>2025 Yana</p>
-        <p>Disigned by Danya</p>
-        <p>Mafia</p>
+        <p>2025</p>
+        <p>Frontend: Яна</p>
+        <p>Backend: Даниил</p>
+        <p>MafiaST</p>
       </div>
     </footer>
   );

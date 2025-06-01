@@ -5,7 +5,7 @@ interface ButtonProps {
   children: React.ReactNode;
   onClick?: () => void;
   disabled?:boolean;
-  type?: "button" | "submit" | "reset"; 
+  type?: "button" | "submit" | "reset";
 }
 
 const Button: React.FC<ButtonProps> = ({ children, onClick, disabled, type }) => {
