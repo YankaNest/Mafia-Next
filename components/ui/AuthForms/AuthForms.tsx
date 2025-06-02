@@ -23,33 +23,43 @@ export default function AuthModals() {
 
   return (
     <div className={styles.authContainer}>
-      <button onClick={openLogin}>Войти</button>
-      <button onClick={openRegister}>Зарегистрироваться</button>
+      <div className={styles.buttonContainer}>
+        <Button onClick={openLogin}>Войти</Button>
+        <p className={styles.ili}>или</p>
+        <Button onClick={openRegister}>Зарегистрироваться</Button>
+      </div>
+      
 
       <CustomModal
         isOpen={isLoginModalOpen}
         onClose={() => setLoginModalOpen(false)}
       >
-        <Login  />
-        <p className={styles.switchText}>
-          Нет аккаунта?{' '}
-          <Button onClick={openRegister}>
-            Зарегистрироваться
-          </Button>
-        </p>
+        <div className={styles.formContainer}>
+          <Login  />
+          <p className={styles.switchText}>
+            Нет аккаунта?{' '}
+            <Button onClick={openRegister}>
+              Зарегистрироваться
+            </Button>
+          </p>
+        </div>
+
       </CustomModal>
 
       <CustomModal
         isOpen={isRegisterModalOpen}
         onClose={() => setRegisterModalOpen(false)}
       >
-        <RegisterForm  />
-        <p className={styles.switchText}>
-          Уже есть аккаунт?{' '}
-          <Button onClick={openLogin}>
-            Войти
-          </Button>
-        </p>
+        <div className={styles.formContainer}>
+          <RegisterForm  />
+          <p className={styles.switchText}>
+            Уже есть аккаунт?{' '}
+            <Button onClick={openLogin}>
+              Войти
+            </Button>
+          </p>
+        </div>
+
       </CustomModal>
     </div>
   );

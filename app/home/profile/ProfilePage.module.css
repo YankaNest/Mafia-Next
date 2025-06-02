@@ -101,14 +101,18 @@
 
 /* Карточки игр и заказов с прозрачным фоном, рамкой и тенью */
 .gameCard, .orderCard {
-  background-color: rgba(0, 0, 0, 0.1); /* прозрачный фон */
-  border: 2px solid #ca7e58; /* рамка акцентного цвета */
+  /* background-color: rgba(0, 0, 0, 0.1);  */
+  /* border: 2px solid #ca7e58; */
   border-radius: 12px;
   padding: 20px 25px;
   margin-bottom: 15px;
-  box-shadow: 0 4px 10px rgba(202, 126, 88, 0.3); /* тень с акцентным цветом */
   color: #ffffff;
   transition: box-shadow 0.3s ease;
+
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+    /* text-align: center;
+    align-content: center; */
+    background-color: rgba(21, 19, 19, 1);
 }
 
 .gameCard:hover, .orderCard:hover {

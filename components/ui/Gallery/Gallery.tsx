@@ -5,13 +5,15 @@ import Image from 'next/image';
 import styles from './Gallery.module.css'
 
 const images = [
-  { id: 1, src: '/images/about/1.jpg', alt: 'Фото 1' },
-  { id: 2, src: '/images/about/2.jpg', alt: 'Фото 2' },
-  { id: 3, src: '/images/about/3.jpg', alt: 'Фото 3' },
-  { id: 4, src: '/images/about/4.jpg', alt: 'Фото 4' },
-  { id: 5, src: '/images/about/5.jpg', alt: 'Фото 5' },
-  { id: 6, src: '/images/about/6.jpg', alt: 'Фото 6' },
-  { id: 7, src: '/images/about/7.jpg', alt: 'Фото 7' },
+  { id: 1, src: '/galary1.jpg', alt: 'Фото 1' },
+  { id: 2, src: '/galary2.webp', alt: 'Фото 2' },
+  { id: 3, src: '/galary3.jpeg', alt: 'Фото 3' },
+  { id: 4, src: '/galary4.jpg', alt: 'Фото 4' },
+  { id: 5, src: '/galary9.png', alt: 'Фото 5' },
+  { id: 6, src: '/galary6.jpg', alt: 'Фото 6' },
+  { id: 7, src: '/galary7.jpg', alt: 'Фото 7' },
+  // { id: 8, src: '/galary5.jpg', alt: 'Фото 8' },
+  // { id: 9, src: '/galary8.png', alt: 'Фото 9' },
 ];
 
 export default function Gallery() {

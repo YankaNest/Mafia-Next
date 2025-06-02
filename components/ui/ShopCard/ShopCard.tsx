@@ -84,7 +84,7 @@ const ShopCard: React.FC<ProductCardProps> = ({ products }) => {
           <p className={styles['collection-name']}>{product.name}</p>
           <div className={styles['prise-container']}>
             <Button onClick={() => addToCart(product.id)}>
-              <Image className={styles['cart-add']} src="/cart-add.svg" alt="Добавить в корзину" />
+              <Image className={styles['cart-add']} src="/cart-add.svg" alt="Добавить в корзину" width={30} height={30} />
             </Button>
             <p className={styles['new-prise']}>{product.price} руб.</p>
           </div>

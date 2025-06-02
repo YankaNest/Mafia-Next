@@ -8,9 +8,9 @@
   
   .cardsWrapper {
     display: flex;
-    gap: 130px;
+    gap: 100px;
     width: 100%;
-    
+    padding: 0 15px;
   }
   
   .arrow {
@@ -38,3 +38,9 @@
     position: relative;
     display: flex;
   }
+
+  .cardsWrapper {
+  /* display: flex;
+  gap: 16px; */
+  /* overflow: hidden; */
+}

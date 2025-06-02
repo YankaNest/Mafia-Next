@@ -42,7 +42,7 @@
   max-height: 90vh;
   border-radius: 10px;
   overflow: hidden;
-  background: #fff;
+  background: none;
   box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
@@ -66,5 +66,5 @@
 }
 
 .closeButton:hover {
-  color: #000;
+  color: #ffffff;
 }
