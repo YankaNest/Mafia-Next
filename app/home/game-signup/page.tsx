@@ -1,12 +1,12 @@
 import { auth } from '@/auth';
 import styles from './GameSignupPage.module.css'
-import { getAllGame, getRegistredGame } from '@/lib/api/games';
+import { getRegistredGame, getUpcomingGame } from '@/lib/api/games';
 import GameSlider from '@/components/ui/GameSlider/GameSlider';
 import { Game } from '@/interfaces/game';
 
 const GameSignupPage = async () => {
  const session = await auth();
- const allGames = await getAllGame();
+ const allGames = await getUpcomingGame();
  let registredGame: Game[] = [];
  if(session?.token) {
   registredGame = await getRegistredGame();

@@ -1,0 +1,6 @@
+.formContainer {
+display: flex;
+flex-direction: row;
+gap: 30px;
+padding: 50px;
+}

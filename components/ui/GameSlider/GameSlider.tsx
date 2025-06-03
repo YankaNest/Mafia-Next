@@ -135,10 +135,11 @@ const GameSlider: React.FC<GameSliderProps> = ({ allGames, registredGames, sessi
   // Функция для определения количества карточек в зависимости от ширины окна
   const updateCardsPerPage = () => {
     const width = window.innerWidth;
-    if (width < 730) {
+    if (width < 810) {
       setCardsPerPage(1);
-    } else if (width < 1000) {
+    } else if (width < 1200) {
       setCardsPerPage(2);
+      // window.location.reload();
     } else {
       setCardsPerPage(3);
     }

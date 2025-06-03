@@ -3,6 +3,7 @@ import { CreateGamePayload } from '@/interfaces/game';
 import { createGame } from '@/lib/api/games';
 import React, { useState } from 'react';
 import styles from './CreateGameForm.module.css'
+import Button from '../Button/Button';
 
 const CreateGameForm: React.FC = () => {
   const [form, setForm] = useState<CreateGamePayload>({
@@ -60,7 +61,8 @@ const CreateGameForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
-      <div>
+      <h2 className={styles.formTitle}>Создать игру</h2>
+      <div className={styles.inputContainer}>
         <label htmlFor="name">Название игры:</label><br />
         <input
           type="text"
@@ -72,7 +74,7 @@ const CreateGameForm: React.FC = () => {
         />
       </div>
 
-      <div>
+      <div className={styles.inputContainer}>
         <label htmlFor="startTime">Время начала игры:</label><br />
         <input
           type="datetime-local"
@@ -84,7 +86,7 @@ const CreateGameForm: React.FC = () => {
         />
       </div>
 
-      <div>
+      <div className={styles.inputContainer}>
         <label htmlFor="endOfRegistration">Конец регистрации:</label><br />
         <input
           type="datetime-local"
@@ -96,7 +98,7 @@ const CreateGameForm: React.FC = () => {
         />
       </div>
 
-      <div>
+      <div className={styles.inputContainer}>
         <label htmlFor="maxPlayers">Максимальное количество игроков:</label><br />
         <input
           type="number"
@@ -109,9 +111,9 @@ const CreateGameForm: React.FC = () => {
         />
       </div>
 
-      <button type="submit" disabled={loading}>
+      <Button type="submit" disabled={loading}>
         {loading ? 'Создание...' : 'Создать игру'}
-      </button>
+      </Button>
 
       {error && <p style={{ color: 'red' }}>{error}</p>}
       {success && <p style={{ color: 'green' }}>{success}</p>}

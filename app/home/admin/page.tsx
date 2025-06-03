@@ -3,6 +3,7 @@ import CreateGameForm from '@/components/ui/CreateGemeForm/CreateGameForm';
 import CreateProductForm from '@/components/ui/CreateProductForm/CreateProductForm';
 import { redirect } from 'next/navigation';
 import React from 'react';
+import styles from './admin.module.css';
 
 export default async function AdminPage() {
   const session = await auth();
@@ -12,8 +13,7 @@ export default async function AdminPage() {
   }
 
   return (
-    <div>
-      <h1>Admin</h1>
+    <div className={styles.formContainer}>
       <CreateGameForm/>
       <CreateProductForm/>
     </div>

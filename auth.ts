@@ -103,7 +103,7 @@ async function refreshAccessToken(token: any) {
 			...token,
 			token: refreshedTokens.accessToken,
 			refreshToken: refreshedTokens.refreshToken || token.refreshToken, // Обновляем refresh token только если он предоставлен API
-			tokenExpires: Date.now() + 15 * 60 * 1000 // Устанавливаем новое время истечения токена (например, 15 минут)
+			tokenExpires: Date.now() + 30 * 60 * 1000 // Устанавливаем новое время истечения токена (например, 15 минут)
 		};
 	} catch (error) {
 		console.error('Ошибка при обновлении токена:', error);

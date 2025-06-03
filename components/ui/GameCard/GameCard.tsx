@@ -409,6 +409,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, session, registredGame = [], 
       await cancelRegistrationGame(game.id);
       setIsRegistered(false);
       onUpdate?.();
+      window.location.reload();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ошибка отмены регистрации');
     } finally {
@@ -431,6 +432,7 @@ const GameCard: React.FC<GameCardProps> = ({ game, session, registredGame = [], 
       await joinGame(game.id);
       setIsRegistered(true);
       onUpdate?.();
+      window.location.reload();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Ошибка записи');
     } finally {
