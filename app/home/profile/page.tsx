@@ -132,6 +132,7 @@ import { Game } from '@/interfaces/game';
 import { getRegistredGame } from '@/lib/api/games';
 import { IOrder } from '@/interfaces/order';
 import { getOrders } from '@/lib/api/orders';
+import SignOutButton from '@/components/ui/SignOutButton/SignOutButton';
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -185,6 +186,7 @@ export default async function ProfilePage() {
             alt={'Фото профиля'}
             width={300}
             height={300}
+            priority
           />
           <button className={styles.overlay}>Редактировать фото</button>
         </div>
@@ -196,6 +198,7 @@ export default async function ProfilePage() {
           <p>{user.phoneNumber}</p>
           <p>{user.email}</p>
         </div>
+        <SignOutButton/>
       </div>
 
       <div className={styles.games}>

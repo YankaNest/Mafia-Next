@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styles from "./AuthForm.module.css";
 import { registerUser } from "@/lib/api/auth";
+import { signIn } from "next-auth/react";
 
 
 const RegisterForm = () => {
@@ -18,7 +19,21 @@ const RegisterForm = () => {
         // Регистрация пользователя
         const data = await registerUser(FirstName, LastName, Email, Password, PhoneNumber);{/**/}
         console.log("Пользователь зарегистрирован:", data);
-        alert("Регистрация успешна!");
+        const result = await signIn('credentials', {
+          redirect: false,  // чтобы контролировать редирект вручную
+          email: Email,
+          password: Password,
+        })
+        
+        if (result?.error) {
+      setErrorMessage('Ошибка при входе после регистрации: ' + result.error);
+    } else {
+      alert("Регистрация и вход успешны!");
+      // Можно сделать редирект вручную, например:
+      // router.push('/profile');
+      // redirect('/home/profile');
+      window.location.reload();
+    }
       } catch (error) {
       console.error("Ошибка:", error);
       setErrorMessage("Произошла ошибка. Проверьте введенные данные.");

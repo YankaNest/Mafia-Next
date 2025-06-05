@@ -35,11 +35,17 @@ export const registerUser = async (
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('Server response:', errorText);
-      throw new Error(`Server error: ${response.status}`);
+      throw new Error(errorText || `Server error: ${response.status}`);
     }
 
-    return await response;
+    const contentType = response.headers.get('content-type') || '';
+if (contentType.includes('application/json')) {
+  const data = await response.json();
+  return data;
+} else {
+  // Если нет JSON, вернуть пустой объект или null
+  return null;
+}
   } catch (error) {
     console.error('Error:', error);
     throw error;
@@ -62,7 +68,8 @@ export const loginUser = async (email: string, password: string) => {
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/login`,{
       ...options,
-      signal: AbortSignal.timeout(3000) // Увеличено до 30 секунд
+      signal: AbortSignal.timeout(3000),
+      
     });
     if (response.ok) {      
       return await response.json(); // Возвращает accessToken и refreshToken
@@ -83,16 +90,21 @@ export const refreshToken = async (refreshToken: string) => {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      refreshToken,
+      "refreshToken": refreshToken,
     }),
   };
 
   try {
     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/refresh-token`, options);
     if (response.ok) {
-      return await response.json(); // Возвращает новый accessToken и refreshToken
+      console.log('REFRESH DONE!!')
+      return await response.json();
+       // Возвращает новый accessToken и refreshToken
     } else {
-      throw new Error('Token refresh failed');
+      // throw new Error('Token refresh failed');
+      const errorText = await response.text();
+        console.error('Refresh token server response:', errorText);
+        throw new Error(`Token refresh failed: ${errorText}`);
     }
   } catch (error) {
     console.error('Error:', error);

@@ -125,7 +125,7 @@ declare module 'next-auth' {
 	interface User {
 		token: string; // Access Token от вашего API
 		refreshToken: string; // Refresh Token от вашего API
-		roles: string;
+		roles: string[];
 	}
 	interface JWT {
         user: User;
