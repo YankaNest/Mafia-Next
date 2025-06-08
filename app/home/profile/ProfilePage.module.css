@@ -14,10 +14,15 @@
   color: #f7f7f7;
 }
 
+.mainInfo button {
+  padding-bottom: 150px;
+  padding-right: 15px;
+}
+
 .profile_image_wrapper {
   position: relative;
-  width: 300px;
-  height: 300px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 0 0 15px rgba(202, 126, 88, 0.6);
@@ -44,12 +49,12 @@
   left: 0;      /* растянуть на всю ширину */
   right: 0;
   bottom: 0;
-  background: linear-gradient(180deg, transparent 60%, rgba(202, 126, 88, 0.85) 100%);
+  background: linear-gradient(180deg, transparent 70%, rgba(202, 126, 88, 0.85) 100%);
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   text-align: center;
-  padding-top: 240px; /* чтобы текст был внизу */
+  padding-top: 140px; /* чтобы текст был внизу */
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 50%;
@@ -83,6 +88,7 @@
 .userName p {
   font-size: 24px;
   font-weight: 600;
+  padding-bottom: 10px;
   margin: 0;
 }
 
@@ -128,4 +134,28 @@
 
 .strongText {
   color: #ca7e58; /* выделение ключевых слов акцентным цветом */
+}
+
+@media (max-width: 900px) {
+  .mainInfo button {
+    position: absolute;
+      top: 120px;
+      right: 40px;
+  }
+}
+
+@media (max-width: 550px) {
+  .mainInfo {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mainInfo button {
+    position: absolute;
+    right: 15px;
+  }
+
+  .profile_image_wrapper {
+    margin-top: 30px;
+  }
 }

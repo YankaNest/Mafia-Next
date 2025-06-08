@@ -53,6 +53,7 @@ if (contentType.includes('application/json')) {
 };
 
 // Авторизация пользователя
+
 export const loginUser = async (email: string, password: string) => {
   const options = {
     method: 'POST',
@@ -72,7 +73,7 @@ export const loginUser = async (email: string, password: string) => {
       
     });
     if (response.ok) {      
-      return await response.json(); // Возвращает accessToken и refreshToken
+      return response.json(); // Возвращает accessToken и refreshToken
     } else {
       throw new Error('Authentication failed');
     }
@@ -83,34 +84,58 @@ export const loginUser = async (email: string, password: string) => {
 };
 
 // Обновление токена
-export const refreshToken = async (refreshToken: string) => {
-  const options = {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      "refreshToken": refreshToken,
-    }),
-  };
+// export const refreshToken = async (refreshToken: string) => {
+//   const options = {
+//     method: 'POST',
+//     headers: {
+//       'Content-Type': 'application/json',
+//     },
+//     body: JSON.stringify({
+//       "refreshToken": refreshToken,
+//     }),
+//   };
 
-  try {
-    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/refresh-token`, options);
-    if (response.ok) {
-      console.log('REFRESH DONE!!')
-      return await response.json();
-       // Возвращает новый accessToken и refreshToken
-    } else {
-      // throw new Error('Token refresh failed');
-      const errorText = await response.text();
-        console.error('Refresh token server response:', errorText);
-        throw new Error(`Token refresh failed: ${errorText}`);
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    throw error;
+//   try {
+//     const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/refresh-token`, options);
+//     if (response.ok) {
+//       console.log('REFRESH DONE!!')
+//       return await response.json();
+//        // Возвращает новый accessToken и refreshToken
+//     } else {
+//       // throw new Error('Token refresh failed');
+//       const errorText = await response.text();
+//         console.error('Refresh token server response:', errorText);
+//         throw new Error(`Token refresh failed: ${errorText}`);
+//     }
+//   } catch (error) {
+//     console.error('Error:', error);
+//     throw error;
+//   }
+// };
+
+
+export const refreshToken = async (refreshToken: string) => {
+  console.log('Sending refresh token:', refreshToken);
+
+  const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}user/refresh-token`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
+  });
+
+  const text = (await response.text()) || 'Empty response body';
+  console.log('Response status:', response.status);
+  console.log('Response body:', text);
+
+  if (!response.ok) {
+    throw new Error(text);
   }
+
+  return JSON.parse(text); // { jwtToken, refreshToken }
 };
+
+
+
 
 export const authenticate = async (
 	prevState: string | undefined,

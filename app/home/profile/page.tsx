@@ -192,8 +192,7 @@ export default async function ProfilePage() {
         </div>
         <div className={styles.info}>
           <div className={styles.userName}>
-            <p>{user.firstName}</p>
-            <p>{user.lastName}</p>
+            <p>{user.firstName} {user.lastName}</p>
           </div>
           <p>{user.phoneNumber}</p>
           <p>{user.email}</p>

@@ -246,6 +246,7 @@ const CartItem: React.FC<CartItemProps> = ({ cart, quantity, onQuantityChange, o
     <div className={styles.CartItemContainer}>
       <div className={styles.cartItem}>
         <Image
+        className={styles.productImage}
           src={`${process.env.NEXT_PUBLIC_BACKEND_API_URL_WITH_SLASH}${cart.product.mainImageUrl}`}
           alt={'Картинка товара'}
           width={100}

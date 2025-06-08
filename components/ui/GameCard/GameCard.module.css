@@ -71,3 +71,43 @@
     font-size: 14px;
   }
   
+  @media (max-width: 480px) {
+  .game-card {
+    width: 260px;
+    height: 500px;
+  }
+
+  .date-container {
+    width: 280px;
+    height: 50px;
+    font-size: 26px;
+    margin-left: -12px;
+  }
+
+  .gamers {
+    width: 280px;
+    height: 80px;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+
+  .button {
+    width: 280px;
+    min-height: 65px;
+    font-size: 20px;
+    margin-left: -12px;
+  }
+
+  .auth-button {
+    margin: 15px 0 8px;
+  }
+
+  .ili {
+    font-size: 18px;
+  }
+
+  .error {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+}
