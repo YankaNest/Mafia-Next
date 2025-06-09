@@ -58,3 +58,77 @@ export const getAllProduct = async (): Promise<IProduct[]> => {
     throw error;
   }
 }
+
+export const deleteProduct = async (productId: string) => {
+  const session = await auth();
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session?.token}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}products/delete/${productId}`,
+      options
+    );
+    if (response.ok) {
+      return true;
+    } else {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Ошибка при удалении продукта:', error);
+    throw error;
+  }
+};
+
+export const getProductById = async (productId: string): Promise<IProduct | null> => {
+  const session = await auth();
+  const options = {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session?.token}`,
+    },
+  };
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}products/get/${productId}`, options);
+    if (response.ok) {
+      return await response.json();
+    } else {
+      return null; // Или throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Ошибка при получении продукта:', error);
+    return null; // Или throw error;
+  }
+};
+
+
+export const updateProduct = async (productId: string, productData: Partial<IProduct>) => {
+  const session = await auth();
+
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session?.token}`,
+    },
+    body: JSON.stringify(productData),
+  };
+
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_API_URL}products/update/${productId}`, options);
+
+    if (!response.ok) {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+
+    return await response.ok;
+  } catch (error) {
+    console.error('Ошибка при обновлении продукта:', error);
+    throw error;
+  }
+};

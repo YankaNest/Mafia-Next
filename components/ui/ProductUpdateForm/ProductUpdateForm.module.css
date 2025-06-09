@@ -1,0 +1,79 @@
+/* ProductUpdateForm.module.css */
+.form {
+  color: var(--white-color);
+  border-radius: 12px;
+  box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25);
+  background-color: rgba(21, 19, 19, 1);
+  width: max-content;
+  padding: 20px;
+  height: max-content;
+}
+
+.formTitle {
+  color: var(--button-color);
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.inputContainer {
+  padding-bottom: 12px;
+}
+
+.inputContainer > label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: var(--white-color);
+}
+
+.submitButton {
+  background-color: var(--button-color);
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: darken(var(--button-color), 10%);
+}
+
+.selectProductContainer {
+  margin-bottom: 20px;
+}
+
+.selectProductContainer label {
+  display: block;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.selectProductContainer select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: rgba(50, 50, 50, 0.5);
+  color: var(--white-color);
+}
+
+/* Добавьте стили для success и error сообщений по желанию */
+.success {
+  color: green;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}

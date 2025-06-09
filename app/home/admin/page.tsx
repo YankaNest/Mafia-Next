@@ -4,6 +4,9 @@ import CreateProductForm from '@/components/ui/CreateProductForm/CreateProductFo
 import { redirect } from 'next/navigation';
 import React from 'react';
 import styles from './admin.module.css';
+import GameDeleteForm from '@/components/ui/DeleteGameForm/DeleteGameForm';
+import ProductDeleteForm from '@/components/ui/DeleteProductForm/DeleteProductForm';
+import ProductUpdateForm from '@/components/ui/ProductUpdateForm/ProductUpdateForm';
 
 export default async function AdminPage() {
   const session = await auth();
@@ -14,8 +17,19 @@ export default async function AdminPage() {
 
   return (
     <div className={styles.formContainer}>
-      <CreateGameForm/>
-      <CreateProductForm/>
+      <p>Работа с играми</p>
+      <div className={styles.formsContainer}>
+      
+        <CreateGameForm/>
+        <GameDeleteForm/>
+      </div>
+      <p>Работа с продуктами</p>
+      <div className={styles.formsContainer}>
+        <CreateProductForm/>
+        <ProductDeleteForm/>
+        <ProductUpdateForm/>
+      </div>
+
     </div>
   );
 };

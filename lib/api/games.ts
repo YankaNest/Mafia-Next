@@ -181,10 +181,6 @@ export const getRegistredGame = async (): Promise<Game[]> => {
 
 export const cancelRegistrationGame = async (gameId: string) => {
   const session = await auth();
-  
-  // if (!session?.token) {
-  //   throw new Error('Требуется авторизация');
-  // }
 
   const options = {
     method: 'DELETE',
@@ -208,6 +204,31 @@ export const cancelRegistrationGame = async (gameId: string) => {
     }
   } catch (error) {
     console.error('Error creating game:', error);
+    throw error;
+  }
+};
+
+export const deleteGame = async (gameId: string) => {
+  const session = await auth();
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session?.token}`,
+    },
+  };
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_BACKEND_API_URL}games/delete/${gameId}`,
+      options
+    );
+    if (response.ok) {
+      return true;
+    } else {
+      throw new Error(`${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.error('Ошибка при удалении игры:', error);
     throw error;
   }
 };
