@@ -4,9 +4,9 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: '185.221.153.154',
-        port: '8080',
+        protocol: 'https',
+        hostname: 'api.mafia-next.ru',
+        port: '',
         pathname: '/images/products/**',
       },
     ],
